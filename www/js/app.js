@@ -7,7 +7,7 @@
 angular.module('app', [
   'ionic',
    'ui.router',
-   'app.todo'
+   'app.toDo'
    ])
 
 .run(function($ionicPlatform) {
@@ -32,7 +32,7 @@ angular.module('app', [
     .state('app', {
     abstract: true,
     templateUrl: 'js/view/menu/menu.html',
-    controller : 'MenuController'
+    controller : 'MenuController',
   })
 
   .state('login', {

@@ -1,0 +1,14 @@
+<ion-view title="To Do">
+	<ion-nav-buttons side='right'>
+		<button class='button ion-plus-round' ng-click="addToDo()"></button>
+	</ion-nav-buttons>
+	<ion-content class = 'has-header'>
+		<ion-list ng-repeat='todo in toDoList'>
+			<ion-item>
+				<h2>{{todo.title}}</h2>
+				<p>{{todo.description}}</p>
+				<p>{{todo.date}}</p>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

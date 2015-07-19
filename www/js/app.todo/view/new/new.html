@@ -1,0 +1,16 @@
+<ion-view title="New To Do">
+	<form ng-submit='newToDo()' class='has-header'>
+	<div class="list list-inset has-header">
+		<label class="item item-input">
+			<input type="text" placeholder="Title" ng-model="data.title" required>
+		</label>
+		<label class="item item-input">
+			<input type="text" placeholder="Description" ng-model="data.description">
+		</label>
+		<label class="item item-input">
+			<input type="text" placeholder="Date" ng-model="data.date">
+		</label>
+	</div>
+	<button class="button button-block button-positive has-header" type='submit'>Save</button>
+	</form>
+</ion-view>
