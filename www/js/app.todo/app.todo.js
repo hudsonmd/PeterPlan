@@ -10,8 +10,8 @@ angular.module('app.toDo', [])
     controller : 'ToDoListController',
     cache: false,
     resolve : {
-    	toDoList : function(){
-    		return localStorage.toDos;
+    	toDoList : function(toDoFactory){
+    		return toDoFactory.getToDoList();
     	}
     }
   })
@@ -20,19 +20,14 @@ angular.module('app.toDo', [])
   	templateUrl : 'js/app.toDo/view/detail/detail.html',
   	controller : 'ToDoDetailController',
   	resolve : {
-  		toDo : function($stateParams){
-  			return localStorage.toDos[$stateParams.id];
+  		toDo : function(toDoFactory, $stateParams){
+  			return toDoFactory.getToDo($stateParams.id);
   		}
   	}
   })
   .state('app.toDoNew', {
   	url : '/new',
   	templateUrl : 'js/app.toDo/view/new/new.html',
-  	controller : 'ToDoNewController',
-  	 resolve : {
-    	toDoList : function(){
-    		return localStorage.toDos;
-    	}
-    }
+  	controller : 'ToDoNewController'
   });
 });

@@ -1,6 +1,5 @@
-angular.module('app.toDo').controller('ToDoNewController', function($scope, $state,toDoList){
+angular.module('app.toDo').controller('ToDoNewController', function($scope, $ionicHistory, toDoFactory){
 
-	var toDos = JSON.parse(toDoList);
 	
 	$scope.newToDo = function(){
 		var newToDo = {};
@@ -8,15 +7,8 @@ angular.module('app.toDo').controller('ToDoNewController', function($scope, $sta
 		newToDo.description = $scope.data.description;
 		newToDo.date = $scope.data.date;
 
-		if(toDos){
-			toDos.push(newToDo);
-		}
-		else{
-			toDos = [newToDo];
-		}
+		toDoFactory.addToDo(newToDo);
 
-		localStorage.toDos = JSON.stringify(toDos);
-
-		$state.go('app.toDoList');
+		$ionicHistory.goBack();
 	}
 });
