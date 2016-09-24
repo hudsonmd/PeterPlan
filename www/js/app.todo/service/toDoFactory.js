@@ -1,5 +1,17 @@
-angular.module('app.toDo').factory('toDoFactory', function(){
-	var toDos = JSON.parse(localStorage.toDos)
+angular.module('app.toDo').factory('toDoFactory', function($firebaseArray, $firebaseObject){
+
+// relevant urls for firebase db
+/*
+  var config = {
+    apiKey: " AIzaSyDXCRADT8wa8kjH-bwWMZCIEAljjwh4fxM",
+    authDomain: "AIzaSyDXCRADT8wa8kjH-bwWMZCIEAljjwh4fxM.firebaseapp.com",
+    databaseURL: "https://peterplan-2d29f.firebaseio.com/",
+    storageBucket: "gs://peterplan-2d29f.appspot.com"
+  };
+  */
+
+
+	var toDos;
 
 	var factory = {};
 
@@ -8,27 +20,18 @@ angular.module('app.toDo').factory('toDoFactory', function(){
 	};
 	
 	factory.getToDoList = function(){
-		return toDos;
+		var itemsRef = new Firebase("https://peterplan-2d29f.firebaseio.com/todos");
+  		toDos = $firebaseArray(itemsRef);
+  		return toDos;
 	}
 
 	factory.getToDo = function(id){
-		return toDos[id];
+		var itemsRef = new Firebase("https://peterplan-2d29f.firebaseio.com/todos/"+id);
+  		return $firebaseObject(itemsRef);
 	}
 
 	factory.addToDo = function(newToDo){
-		if(toDos){
-			toDos.push(newToDo);
-		}
-		else{
-			toDos = [newToDo];
-		}
-
-		saveChanges();
-	}
-
-	factory.delToDo = function(id){
-		toDos.splice(id,1);
-		saveChanges();
+		toDos.$add(newToDo);
 	}
 
 

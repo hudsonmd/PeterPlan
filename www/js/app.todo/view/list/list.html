@@ -4,7 +4,7 @@
 	</ion-nav-buttons>
 	<ion-content class = 'has-header'>
 		<ion-list ng-repeat='todo in toDoList track by $index'>
-			<ion-item ng-click='goToDetail($index)'>
+			<ion-item ng-click='goToDetail(todo)'>
 				<h2>{{todo.title}}</h2>
 				<p>{{todo.description}}</p>
 				<p>{{todo.date}}</p>

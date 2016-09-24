@@ -8,22 +8,22 @@ angular.module('app.toDo', [])
     url: '/toDo',
     templateUrl: 'js/app.toDo/view/list/list.html',
     controller : 'ToDoListController',
-    cache: false,
+    cache: false/*,
     resolve : {
     	toDoList : function(toDoFactory){
     		return toDoFactory.getToDoList();
     	}
-    }
+    }*/
   })
   .state('app.toDoDetail', {
   	url: '/detail/:id',
   	templateUrl : 'js/app.toDo/view/detail/detail.html',
-  	controller : 'ToDoDetailController',
+  	controller : 'ToDoDetailController'/*,
   	resolve : {
   		toDo : function(toDoFactory, $stateParams){
   			return toDoFactory.getToDo($stateParams.id);
   		}
-  	}
+  	}*/
   })
   .state('app.toDoNew', {
   	url : '/new',

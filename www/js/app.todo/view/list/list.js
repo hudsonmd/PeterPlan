@@ -1,11 +1,11 @@
-angular.module('app.toDo').controller('ToDoListController', function($scope, $state, toDoList){
-	$scope.toDoList = toDoList;
+angular.module('app.toDo').controller('ToDoListController', function($scope, $state, toDoFactory){
+	$scope.toDoList = toDoFactory.getToDoList();
 
 	$scope.addToDo = function(){
 		$state.go('app.toDoNew');
 	};
 
-	$scope.goToDetail = function(index){
-		$state.go('app.toDoDetail', {'id' : index});
+	$scope.goToDetail = function(toDo){
+		$state.go('app.toDoDetail', {'id' : toDo.$id});
 	}
 });
